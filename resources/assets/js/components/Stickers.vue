@@ -20,7 +20,10 @@
           </button>
           </span>
         </div>
-
+        <div class="input-group text-center mt-3">
+            <img src="image/喇叭.jpg" height="200px">
+            <span style="line-height:200px;padding-left: 8px;font-size: 32px;"> X {{alanSticker}}</span>
+        </div>
         <hr style="margin-top: 32px;">
 
         <h2>孟庭</h2>
@@ -36,6 +39,10 @@
                 <i class="fa fa-plus"></i>
               </button>
           </span>
+        </div>
+        <div class="input-group text-center mt-3">
+            <img src="image/旅遊.png" height="200px">
+            <span style="line-height:200px;padding-left: 8px;font-size: 32px;"> X {{mengSticker}}</span>
         </div>
     </div>
 </template>
@@ -54,7 +61,9 @@
         data() {
             return {
                 alanTingStickers: 0,
+                alanSticker: 0,
                 mengTingStickers: 0,
+                mengSticker: 0,
                 isLoading: false,
                 fullPage: true,
                 bgColor: '#23405c',
@@ -64,7 +73,6 @@
         created() {
             this.fetchSticker();
         },
-
         methods: {
             fetchSticker() {
                 this.isLoading = true;
@@ -74,6 +82,8 @@
                     .then(data => {
                         this.alanTingStickers = data[0].counts;
                         this.mengTingStickers = data[1].counts;
+                        this.alanSticker = parseInt(this.alanTingStickers / 10 , 10);
+                        this.mengSticker = parseInt(this.mengTingStickers / 10 , 10);
                         this.isLoading = false;
                     })
                     .catch(err => console.log(err));
@@ -96,9 +106,18 @@
                     .then(data => {
                             if (name === 'Ting Alan') {
                                 this.alanTingStickers = data.Message.counts;
+                                if (data.Message.counts % 10 === 0) {
+                                    alert(`恭喜宣文獲得第 ${data.Message.counts / 10} 張貼紙`)
+                                }
                             } else {
                                 this.mengTingStickers = data.Message.counts;
+                                if (data.Message.counts % 10 === 0) {
+                                    alert(`恭喜孟庭獲得第 ${data.Message.counts / 10} 張貼紙`)
+                                }
                             }
+
+                            this.alanSticker = parseInt(this.alanTingStickers / 10 , 10);
+                            this.mengSticker = parseInt(this.mengTingStickers / 10 , 10);
                             this.isLoading = false;
                         }
                     )

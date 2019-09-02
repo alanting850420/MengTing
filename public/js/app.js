@@ -1745,6 +1745,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1755,7 +1762,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       alanTingStickers: 0,
+      alanSticker: 0,
       mengTingStickers: 0,
+      mengSticker: 0,
       isLoading: false,
       fullPage: true,
       bgColor: '#23405c'
@@ -1775,6 +1784,8 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (data) {
         _this.alanTingStickers = data[0].counts;
         _this.mengTingStickers = data[1].counts;
+        _this.alanSticker = parseInt(_this.alanTingStickers / 10, 10);
+        _this.mengSticker = parseInt(_this.mengTingStickers / 10, 10);
         _this.isLoading = false;
       })["catch"](function (err) {
         return console.log(err);
@@ -1800,10 +1811,20 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (data) {
         if (name === 'Ting Alan') {
           _this2.alanTingStickers = data.Message.counts;
+
+          if (data.Message.counts % 10 === 0) {
+            alert("\u606D\u559C\u5BA3\u6587\u7372\u5F97\u7B2C ".concat(data.Message.counts / 10, " \u5F35\u8CBC\u7D19"));
+          }
         } else {
           _this2.mengTingStickers = data.Message.counts;
+
+          if (data.Message.counts % 10 === 0) {
+            alert("\u606D\u559C\u5B5F\u5EAD\u7372\u5F97\u7B2C ".concat(data.Message.counts / 10, " \u5F35\u8CBC\u7D19"));
+          }
         }
 
+        _this2.alanSticker = parseInt(_this2.alanTingStickers / 10, 10);
+        _this2.mengSticker = parseInt(_this2.mengTingStickers / 10, 10);
         _this2.isLoading = false;
       })["catch"](function (err) {
         return console.log(err);
@@ -40563,6 +40584,22 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
+    _c("div", { staticClass: "input-group text-center mt-3" }, [
+      _c("img", { attrs: { src: "image/喇叭.jpg", height: "200px" } }),
+      _vm._v(" "),
+      _c(
+        "span",
+        {
+          staticStyle: {
+            "line-height": "200px",
+            "padding-left": "8px",
+            "font-size": "32px"
+          }
+        },
+        [_vm._v(" X " + _vm._s(_vm.alanSticker))]
+      )
+    ]),
+    _vm._v(" "),
     _c("hr", { staticStyle: { "margin-top": "32px" } }),
     _vm._v(" "),
     _c("h2", [_vm._v("孟庭")]),
@@ -40605,6 +40642,22 @@ var render = function() {
           [_c("i", { staticClass: "fa fa-plus" })]
         )
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "input-group text-center mt-3" }, [
+      _c("img", { attrs: { src: "image/旅遊.png", height: "200px" } }),
+      _vm._v(" "),
+      _c(
+        "span",
+        {
+          staticStyle: {
+            "line-height": "200px",
+            "padding-left": "8px",
+            "font-size": "32px"
+          }
+        },
+        [_vm._v(" X " + _vm._s(_vm.mengSticker))]
+      )
     ])
   ])
 }
@@ -53021,8 +53074,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/alan.ting/Desktop/MengTing/resources/assets/js/app.js */"./resources/assets/js/app.js");
-module.exports = __webpack_require__(/*! /Users/alan.ting/Desktop/MengTing/resources/assets/sass/app.scss */"./resources/assets/sass/app.scss");
+__webpack_require__(/*! /Users/alan.ting/Love/MengTing/resources/assets/js/app.js */"./resources/assets/js/app.js");
+module.exports = __webpack_require__(/*! /Users/alan.ting/Love/MengTing/resources/assets/sass/app.scss */"./resources/assets/sass/app.scss");
 
 
 /***/ })
